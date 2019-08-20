@@ -28,18 +28,18 @@ kits.formatDate = function () {
   return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
 }
 
-kits.randomInt = function(n,m){
-  return Math.floor(Math.random() * (m-n+1) + n);
+kits.randomInt = function (n, m) {
+  return Math.floor(Math.random() * (m - n + 1) + n);
 }
 
 // 常见的给id的方式1
 // 当前时间戳 + 大的随机数
-kits.getId = function(){
+kits.getId = function () {
   // 返回一个不容易重复的id
   let date = new Date();
   let time = date.getTime();// 得到的是从1970年1月1日到现在为止的毫秒总数
   // 然后在得到一个足够大的随机数，把毫秒和随机数相连，作为新的id
-  let r = this.randomInt(100000,999999);
+  let r = this.randomInt(100000, 999999);
   // 把两个数字连起来
   let id = time + '' + r;
   return id;
