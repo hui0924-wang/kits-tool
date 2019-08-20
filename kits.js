@@ -44,3 +44,28 @@ kits.getId = function () {
   let id = time + '' + r;
   return id;
 }
+
+// 获取一个随机的16进制的颜色
+kits.randomHexColor = function () {
+  let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+  // 随机索引(0,15);
+  let randomIndex = this.randomInt(0, 15);
+  let hex = '';
+  for (let i = 0; i < 6; i++) {
+    hex += arr[randomIndex];
+    randomIndex = this.randomInt(0, 15);
+  }
+  let hexColor = '#' + hex
+  return hexColor;
+}
+
+
+// 获取一个随机的rgb格式的颜色
+kits.randomRGBColor = function () {
+  // 颜色是在0到255之间的随机整数；
+  let r = this.randomInt(0, 255);
+  let g = this.randomInt(0, 255);
+  let b = this.randomInt(0, 255);
+  let rgbColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+  return rgbColor;
+}
