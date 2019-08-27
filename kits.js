@@ -69,3 +69,24 @@ kits.randomRGBColor = function () {
   let rgbColor = 'rgb(' + r + ',' + g + ',' + b + ')';
   return rgbColor;
 }
+
+/**
+ * @description    从localStorage里面根据指定的键获取一个数组
+ * @param {string} key 存储在localStorage里面数据对应的键
+ * @returns {Array}     将JSON字符串反序列化后的数组
+*/
+kits.getLocalDataArray = function (key) {
+  let json = localStorage.getItem(key);
+  let arr = JSON.parse(json);
+  return arr = arr || [];
+}
+
+/**
+ * @description  将一个数组(arr)以指定的键(key)存储到localStorage里面
+ * @param  {string}  key   参数 localStorage里面根据key存储的数据
+ * @param   {Array}  arr    参数要存入localStorage的key里面的数据
+*/
+kits.saveLocalDataArray=function(key,arr){
+  let json=JSON.stringify(arr);
+  localStorage.setItem(key,json);
+}
