@@ -83,10 +83,67 @@ kits.getLocalDataArray = function (key) {
 
 /**
  * @description  将一个数组(arr)以指定的键(key)存储到localStorage里面
- * @param  {string}  key   参数 localStorage里面根据key存储的数据
- * @param   {Array}  arr    参数要存入localStorage的key里面的数据
+ * @param  {string}  key   参数    localStorage里面根据key存储的数据
+ * @param   {Array}  arr   参数  要存入localStorage的key里面的数据
 */
-kits.saveLocalDataArray=function(key,arr){
-  let json=JSON.stringify(arr);
-  localStorage.setItem(key,json);
+kits.saveLocalDataArray = function (key, arr) {
+  let json = JSON.stringify(arr);
+  localStorage.setItem(key, json);
 }
+
+
+
+/** 
+ * @description  根据id修改localStorage里面的指定键(key)的数组数据
+ * @param {number} id     根据你传入的id，找到localStorage里面的key对应的数据
+ * @param {Object} data   把通过id找到的数据，修改为你传入的data
+ * 
+*/
+kits.modifyLocalDataById = function (key, id, data) {
+  let arr = kits.getLocalDataArray(key);
+  arr.forEach((e, i) => {
+    if (e.id == id) {
+      // console.log(e);
+      arr[i] = data;
+    }
+  })
+  // 存储修改后的数据
+  kits.saveLocalDataArray(key, arr);
+}
+
+
+
+
+/**
+ * @description   根据对应的id从localStorage中指定键(key)的数组中删除一条数据
+ * @param  {string}  key   参数    localStorage里面根据key存储的数据
+ * @param  {number}  id    参数    根据你传入的id，找到localStorage里面的key对应的数据
+ */
+
+kits.deleteLocalDataById = function (key, id) {
+  let arr = kits.getLocalDataArray(key);
+  arr.forEach((e, i) => {
+    if (e.id == id) {
+      // console.log(e);
+      arr.splice(i, 1);
+    }
+    kits.saveLocalDataArray(key, arr);
+  })
+}
+
+
+
+/**
+ * @description  向localStorage里面指定键(key)的数组数据追加一个数据对象（data）
+ * @param {string} key   localStorage里面根据根据key存储的数据
+ * @param {Object} data  你要追加到localstorage的数据对象
+ */
+
+kits.appendDataIntoArray = function (key, data) {
+  let arr = kits.getLocalDataArray(key);
+  arr.push(data);
+  kits.saveLocalDataArray(key, arr);
+}
+
+
+

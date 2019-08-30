@@ -58,6 +58,19 @@
   console.log(rgbColor);
 
 
+  // 本地存储修改后的数据
+  let arr = [{ id: 1, content: 'hahaha' }, { id: 2, content: 'wuwuuwu' }]
+  kits.saveLocalDataArray('shuju', arr)
+  kits.modifyLocalDataById('shuju', 2, { id: 2, content: '修改后的不不不' });
+
+  // 从本地存储删除数据
+  kits.deleteLocalDataById('shuju', 2);
+
+
+  // 从本地数据里追加数据
+
+  kits.appendDataIntoArray('shuju', { id: 2, content: '我又回来了' });
+  kits.appendDataIntoArray('shuju', { id: 3, content: '我妈也回来了' });
 
 </script>
 
